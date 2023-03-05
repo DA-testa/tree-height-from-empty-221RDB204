@@ -9,15 +9,17 @@ def compute_height(n, parents):
     # Write this function
     max_height = 0
     # Your code here
-    skatits = np.zeros(n)
-    height = np.zeros(n)
+    skatits = [0] * n
+    height = [0] * n
     for i in range(n):
         if skatits[i] == 0:
             skatits[i] = 1
             height[i] += 1
             previous = [i]
             element = parents[i]
-            while element == -1:
+            while True:
+                if element == -1:
+                    break
                 if skatits[element] == 0:
                     skatits[element] = 1
                     previous.append(element)
@@ -40,7 +42,7 @@ def main():
     if mode[0] == "I":
         n = int(input())
         dati = input()
-        parents = np.array(dati.split(), dtype=int)
+        parents = list(map(int, dati.split()))
         print(compute_height(n, parents))
     elif mode[0] == "F":
         file_name = input()
@@ -49,7 +51,7 @@ def main():
         file_name = 'test/' + file_name
         with open(file_name, 'r') as f:
             n = int(f.readline())
-            parents = np.array(f.readline().split(), dtype=int)
+            parents = list(map(int, f.readline().split()))
         print(compute_height(n, parents))
     else:
         return
