@@ -39,12 +39,12 @@ def compute_height(n, parents):
 def main():
     # implement input form keyboard and from files
     mode = input()
-    if mode[0] == "I":
+    if mode[0] == "I" or mode[0] == "F":
         pass
-    elif mode[0] == "F":
-        file_name = input()
-        if "a" in file_name:
-            return
+    #elif mode[0] == "F":
+    #    file_name = input()
+    #    if "a" in file_name:
+    #        return
     else:
         return
     # let user input file name to use, don't allow file names with letter a
