@@ -48,7 +48,7 @@ def main():
         file_name = input()
         if "a" in file_name:
             return
-        file_name = 'test/' + file_name + '.txt'
+        file_name = 'test/' + file_name
         with open(file_name, 'r') as f:
             n = int(f.readline())
             parents = np.array(f.readline().split(), dtype=int)
