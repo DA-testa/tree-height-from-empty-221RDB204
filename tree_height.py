@@ -14,10 +14,21 @@ def compute_height(n, parents):
 
 def main():
     # implement input form keyboard and from files
-    
+    mode = input()
+    if mode[0] == "I":
+        pass
+    elif mode[0] == "F":
+        file_name = input()
+        if "a" in file_name:
+            return
+    else:
+        return
     # let user input file name to use, don't allow file names with letter a
     # account for github input inprecision
-    
+    n = input()
+    dati = input()
+    parents = dati.split()
+    print(parents)
     # input number of elements
     # input values in one variable, separate with space, split these values in an array
     # call the function and output it's result
