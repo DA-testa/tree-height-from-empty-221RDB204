@@ -52,6 +52,7 @@ def main():
         with open(file_name, 'r') as f:
             n = int(f.readline())
             parents = np.array(f.readline().split(), dtype=int)
+        print(compute_height(n, parents))
     else:
         return
     # let user input file name to use, don't allow file names with letter a
