@@ -2,13 +2,37 @@
 
 import sys
 import threading
-import numpy
+import numpy as np
 
 
 def compute_height(n, parents):
     # Write this function
     max_height = 0
     # Your code here
+    skatits = np.zeros(n)
+    height = np.zeros(n)
+    for i in range(n):
+        if skatits[i] == 0:
+            skatits[i] = 1
+            height[i] += 1
+            previous = [i]
+            element = parents[i]
+            while True:
+                if element == -1:
+                    break
+                if skatits[element] == 0:
+                    skatits[element] = 1
+                    previous.append(element)
+                    for x in previous:
+                        height[x] += 1
+                    element = parents[element]
+                else:
+                    u = 1
+                    for x in reversed(previous):
+                        height[x] = height[element]+u
+                        u += 1
+                    break
+    max_height = int(np.max(height))
     return max_height
 
 
@@ -25,14 +49,14 @@ def main():
         return
     # let user input file name to use, don't allow file names with letter a
     # account for github input inprecision
-    n = input()
+    n = int(input())
     dati = input()
-    parents = dati.split()
-    print(parents)
+    parents = np.array(dati.split(), dtype=int)
+    print(compute_height(n, parents))
+    return
     # input number of elements
     # input values in one variable, separate with space, split these values in an array
     # call the function and output it's result
-    pass
 
 # In Python, the default limit on recursion depth is rather low,
 # so raise it here for this problem. Note that to take advantage
@@ -40,5 +64,4 @@ def main():
 sys.setrecursionlimit(10**7)  # max depth of recursion
 threading.stack_size(2**27)   # new thread will get stack of such size
 threading.Thread(target=main).start()
-main()
 # print(numpy.array([1,2,3]))
