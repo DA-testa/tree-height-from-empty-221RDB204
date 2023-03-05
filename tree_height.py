@@ -39,21 +39,24 @@ def compute_height(n, parents):
 def main():
     # implement input form keyboard and from files
     mode = input()
-    if mode[0] == "I" or mode[0] == "F":
-        pass
-    #elif mode[0] == "F":
-    #    file_name = input()
-    #    if "a" in file_name:
-    #        return
+    if mode[0] == "I":
+        n = int(input())
+        dati = input()
+        parents = np.array(dati.split(), dtype=int)
+        print(compute_height(n, parents))
+    elif mode[0] == "F":
+        file_name = input()
+        if "a" in file_name:
+            return
+        file_name = 'test/' + file_name + '.txt'
+        with open(file_name, 'r') as f:
+            n = int(f.readline())
+            parents = np.array(f.readline().split(), dtype=int)
     else:
         return
     # let user input file name to use, don't allow file names with letter a
     # account for github input inprecision
-    n = int(input())
-    dati = input()
-    parents = np.array(dati.split(), dtype=int)
-    print(compute_height(n, parents))
-    return
+    
     # input number of elements
     # input values in one variable, separate with space, split these values in an array
     # call the function and output it's result
