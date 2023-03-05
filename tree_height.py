@@ -17,9 +17,7 @@ def compute_height(n, parents):
             height[i] += 1
             previous = [i]
             element = parents[i]
-            while True:
-                if element == -1:
-                    break
+            while element == -1:
                 if skatits[element] == 0:
                     skatits[element] = 1
                     previous.append(element)
